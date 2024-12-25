@@ -23,3 +23,474 @@ int main() {
 
     return 0;
 }
+
+
+
+
+#include <iostream>
+using namespace std;
+
+void compute_factors(int num, int start = 1) {
+    for (int i = start; i <= num; ++i) {
+        if (num % i == 0) {
+            cout << i << " ";
+        }
+    }
+    cout << endl;
+}
+
+int main() {
+    int number;
+    cout << "Enter a number to find its factors: ";
+    cin >> number;
+
+    if (number > 0) {
+        cout << "Factors of " << number << ": ";
+        compute_factors(number);
+    } else {
+        cout << "Please enter a positive number." << endl;
+    }
+
+    return 0;
+}
+
+
+
+
+#include <iostream>
+using namespace std;
+
+void find_min_max_avg(int arr[], int size) {
+    int min = arr[0], max = arr[0];
+    double sum = 0;
+
+    for (int i = 0; i < size; ++i) {
+        if (arr[i] < min) min = arr[i];
+        if (arr[i] > max) max = arr[i];
+        sum += arr[i];
+    }
+
+    cout << "Minimum: " << min << "\nMaximum: " << max << "\nAverage: " << sum / size << endl;
+}
+
+int main() {
+    int n;
+    cout << "Enter the number of elements: ";
+    cin >> n;
+
+    int arr[n];
+    cout << "Enter " << n << " elements: ";
+    for (int i = 0; i < n; ++i) cin >> arr[i];
+
+    find_min_max_avg(arr, n);
+
+    return 0;
+}
+
+
+
+#include <iostream>
+#include <algorithm>
+using namespace std;
+
+void linear_search(int arr[], int size, int key) {
+    for (int i = 0; i < size; ++i) {
+        if (arr[i] == key) {
+            cout << "Element " << key << " found at index " << i << " (Linear Search)\n";
+            return;
+        }
+    }
+    cout << "Element " << key << " not found (Linear Search)\n";
+}
+
+void binary_search(int arr[], int size, int key) {
+    sort(arr, arr + size); // Ensure the array is sorted for binary search
+    int left = 0, right = size - 1;
+    while (left <= right) {
+        int mid = left + (right - left) / 2;
+        if (arr[mid] == key) {
+            cout << "Element " << key << " found at index " << mid << " (Binary Search)\n";
+            return;
+        }
+        if (arr[mid] < key) {
+            left = mid + 1;
+        } else {
+            right = mid - 1;
+        }
+    }
+    cout << "Element " << key << " not found (Binary Search)\n";
+}
+
+int main() {
+    int n, key;
+    cout << "Enter the number of elements: ";
+    cin >> n;
+
+    int arr[n];
+    cout << "Enter " << n << " elements: ";
+    for (int i = 0; i < n; ++i) cin >> arr[i];
+
+    cout << "Enter the element to search: ";
+    cin >> key;
+
+    linear_search(arr, n, key);
+    binary_search(arr, n, key);
+
+    return 0;
+}
+
+
+
+
+#include <iostream>
+#include <algorithm>
+using namespace std;
+
+void linear_search(int arr[], int size, int key) {
+    for (int i = 0; i < size; ++i) {
+        if (arr[i] == key) {
+            cout << "Element " << key << " found at index " << i << " (Linear Search)\n";
+            return;
+        }
+    }
+    cout << "Element " << key << " not found (Linear Search)\n";
+}
+
+void binary_search(int arr[], int size, int key) {
+    sort(arr, arr + size); // Ensure the array is sorted for binary search
+    int left = 0, right = size - 1;
+    while (left <= right) {
+        int mid = left + (right - left) / 2;
+        if (arr[mid] == key) {
+            cout << "Element " << key << " found at index " << mid << " (Binary Search)\n";
+            return;
+        }
+        if (arr[mid] < key) {
+            left = mid + 1;
+        } else {
+            right = mid - 1;
+        }
+    }
+    cout << "Element " << key << " not found (Binary Search)\n";
+}
+
+void display_addresses(int arr[], int size) {
+    for (int i = 0; i < size; ++i) {
+        cout << "Address of element at index " << i << " (value: " << arr[i] << "): " << &arr[i] << endl;
+    }
+}
+
+int main() {
+    int n, key;
+    cout << "Enter the number of elements: ";
+    cin >> n;
+
+    int arr[n];
+    cout << "Enter " << n << " elements: ";
+    for (int i = 0; i < n; ++i) cin >> arr[i];
+
+    cout << "Enter the element to search: ";
+    cin >> key;
+
+    linear_search(arr, n, key);
+    binary_search(arr, n, key);
+
+    cout << "\nDisplaying the addresses of array elements:\n";
+    display_addresses(arr, n);
+
+    return 0;
+}
+
+
+
+
+
+#include <iostream>
+using namespace std;
+
+int stringLength(const char* str) {
+    const char* ptr = str;
+    int length = 0;
+
+    while (*ptr != '\0') {
+        length++;
+        ptr++;
+    }
+
+    return length;
+}
+
+int main() {
+    const char* str = "Hello, world!";
+    int length = stringLength(str);
+    cout << "Length of the string is: " << length << endl;
+    return 0;
+}
+
+
+
+
+
+#include <iostream>
+#include <cctype>
+using namespace std;
+
+bool checkFirstLetterUppercase(const string& str) {
+    bool isWordStart = true;
+
+    for (char ch : str) {
+        if (isWordStart) {
+            if (!isupper(ch)) {
+                return false;
+            }
+            isWordStart = false;
+        }
+        if (ch == ' ') {
+            isWordStart = true;
+        }
+    }
+
+    return true;
+}
+
+int main() {
+    string str;
+    cout << "Enter a string: ";
+    getline(cin, str);
+
+    if (checkFirstLetterUppercase(str)) {
+        cout << "The first character of every word is in uppercase." << endl;
+    } else {
+        cout << "The first character of every word is not in uppercase." << endl;
+    }
+
+    return 0;
+}
+
+
+
+
+#include <iostream>
+#include <string>
+using namespace std;
+
+void reverseString(string& str) {
+    int start = 0;
+    int end = str.length() - 1;
+
+    while (start < end) {
+        swap(str[start], str[end]);
+        start++;
+        end--;
+    }
+}
+
+int main() {
+    string str;
+    cout << "Enter a string: ";
+    getline(cin, str);
+
+    reverseString(str);
+
+    cout << "Reversed string: " << str << endl;
+
+    return 0;
+}
+
+
+
+
+
+#include <iostream>
+using namespace std;
+
+int main() {
+    string str;
+    cout << "Enter a string: ";
+    getline(cin, str);
+
+    for (size_t i = 0; i < str.length(); ++i) {
+        cout << "Address of character '" << str[i] << "' at index " << i << ": " << (void*)&str[i] << endl;
+    }
+
+    return 0;
+}
+
+
+
+
+
+
+
+
+create a class triangle include overloaded functions for calculating the area of a triamgle
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+class Triangle {
+public:
+    double area(double base, double height) {
+        return 0.5 * base * height;
+    }
+
+    double area(double side1, double side2, double side3) {
+        double s = (side1 + side2 + side3) / 2;
+        return sqrt(s * (s - side1) * (s - side2) * (s - side3));
+    }
+};
+
+int main() {
+    Triangle t;
+
+    double base, height;
+    cout << "Enter base and height: ";
+    cin >> base >> height;
+    cout << "Area (base & height): " << t.area(base, height) << endl;
+
+    double side1, side2, side3;
+    cout << "Enter three sides: ";
+    cin >> side1 >> side2 >> side3;
+    cout << "Area (three sides): " << t.area(side1, side2, side3) << endl;
+
+    return 0;
+}
+
+
+
+
+copy the contents of one text file to another file and display the number of characters copied
+#include <iostream>
+#include <fstream>
+using namespace std;
+
+int main() {
+    string sourceFile, destFile;
+    cout << "Enter the source file name: ";
+    cin >> sourceFile;
+    cout << "Enter the destination file name: ";
+    cin >> destFile;
+
+    ifstream src(sourceFile, ios::in);
+    if (!src) {
+        cout << "Error opening source file!" << endl;
+        return 1;
+    }
+
+    ofstream dest(destFile, ios::out);
+    if (!dest) {
+        cout << "Error opening destination file!" << endl;
+        return 1;
+    }
+
+    char ch;
+    int charCount = 0;
+    while (src.get(ch)) {
+        dest.put(ch);
+        charCount++;
+    }
+
+    src.close();
+    dest.close();
+
+    cout << "Number of characters copied: " << charCount << endl;
+
+    return 0;
+}
+
+
+
+
+1.>>>>>writ a program to compute the sum of the first n term of following series s=1-2^n+3^n-4 ^n+...... the number of term n is to be taken from the user through the command line argument is not found then prompt the user to enter the value of n
+#include <iostream>
+#include <cmath>
+#include <cstdlib>
+using namespace std;
+
+int main(int argc, char* argv[]) {
+    int n;
+
+    if (argc > 1) {
+        n = atoi(argv[1]);
+    } else {
+        cout << "Enter the number of terms (n): ";
+        cin >> n;
+    }
+
+    if (n <= 0) {
+        cout << "Please enter a positive integer for n." << endl;
+        return 1;
+    }
+
+    int sum = 0;
+    for (int i = 1; i <= n; ++i) {
+        if (i % 2 == 1) {
+            sum += pow(i, i);
+        } else {
+            sum -= pow(i, i);
+        }
+    }
+
+    cout << "The sum of the first " << n << " terms is: " << sum << endl;
+
+    return 0;
+}
+
+
+
+7>>>>create a template class twoDim which contains x and y coordinates. define default constructor, parameterized constructor and  void print() function to print the coordinates. now reuse this class in threeDim adding a new dimension as z. define the constructors an void print() in the subclass. implement main() to show runtime plymorphism
+#include <iostream>
+using namespace std;
+
+template <typename T>
+class twoDim {
+protected:
+    T x, y;
+
+public:
+    twoDim() : x(0), y(0) {}
+
+    twoDim(T x, T y) : x(x), y(y) {}
+
+    virtual void print() {
+        cout << "Coordinates: (" << x << ", " << y << ")" << endl;
+    }
+};
+
+template <typename T>
+class threeDim : public twoDim<T> {
+private:
+    T z;
+
+public:
+    threeDim() : twoDim<T>(), z(0) {}
+
+    threeDim(T x, T y, T z) : twoDim<T>(x, y), z(z) {}
+
+    void print() override {
+        cout << "Coordinates: (" << this->x << ", " << this->y << ", " << z << ")" << endl;
+    }
+};
+
+int main() {
+    twoDim<int>* ptr;
+
+    twoDim<int> obj2D(1, 2);
+    threeDim<int> obj3D(3, 4, 5);
+
+    ptr = &obj2D;
+    ptr->print();  // Calls twoDim::print()
+
+    ptr = &obj3D;
+    ptr->print();  // Calls threeDim::print() (runtime polymorphism)
+
+    return 0;
+}
+
+
+
+
+
+
+
+
